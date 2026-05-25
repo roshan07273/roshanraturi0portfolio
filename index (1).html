@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roshan Raturi | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:#fafafa;font-family:'DM Sans',sans-serif;color:#334155;}
+    ::selection{background:#6366f1;color:white;}
+    a{color:#6366f1;text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid #e2e8f0;}
+    .nav-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;}
+    .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:#0f172a;letter-spacing:-0.5px;}
+    .logo span{color:#6366f1;}
+    .nav-links{display:flex;gap:4px;}
+    .nav-links a{font-size:14px;font-weight:500;color:#64748b;padding:6px 12px;border-radius:8px;transition:all 0.15s;white-space:nowrap;}
+    .nav-links a:hover,.nav-links a.active{color:#6366f1;background:#f0f4ff;text-decoration:none;}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;color:#0f172a;font-size:22px;}
+    .mobile-menu{display:none;flex-direction:column;gap:4px;padding:12px 24px 16px;background:white;border-bottom:1px solid #e2e8f0;}
+    .mobile-menu a{font-size:15px;font-weight:500;color:#64748b;padding:8px 12px;border-radius:8px;}
+    .mobile-menu a:hover{color:#6366f1;background:#f0f4ff;text-decoration:none;}
+    .mobile-menu.open{display:flex;}
+
+    /* LAYOUT */
+    .container{max-width:900px;margin:0 auto;padding:0 24px;}
+    section{padding:72px 0 36px;}
+
+    /* SECTION TITLE */
+    .section-title{display:flex;align-items:center;gap:16px;margin-bottom:36px;}
+    .section-title h2{font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:#0f172a;white-space:nowrap;letter-spacing:-0.5px;}
+    .section-title .line{flex:1;height:1px;background:linear-gradient(90deg,#6366f1,transparent);min-width:20px;}
+
+    /* HERO */
+    .hero{padding:72px 0 36px;}
+    .available{font-size:13px;font-weight:600;color:#6366f1;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+    h1{font-family:'Sora',sans-serif;font-size:clamp(32px,6vw,54px);font-weight:700;color:#0f172a;line-height:1.1;letter-spacing:-1px;margin-bottom:14px;}
+    .title1{font-size:16px;color:#6366f1;font-weight:600;margin-bottom:4px;line-height:1.4;}
+    .title2{font-size:13px;color:#94a3b8;font-weight:500;margin-bottom:16px;}
+    .bio{font-size:15px;color:#475569;line-height:1.8;margin-bottom:28px;max-width:580px;}
+    .btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;cursor:pointer;border:none;transition:opacity 0.15s;}
+    .btn:hover{opacity:0.88;text-decoration:none;}
+    .btn-indigo{background:#6366f1;color:white;}
+    .btn-dark{background:#0f172a;color:white;}
+    .btn-orange{background:#f89f1b;color:white;}
+    .btn-outline{background:transparent;border:1.5px solid #6366f1;color:#6366f1;}
+
+    /* STATS */
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px;}
+    .stat{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:20px 16px;text-align:center;}
+    .stat-n{font-size:26px;font-weight:700;color:#6366f1;font-family:'Sora',sans-serif;}
+    .stat-l{font-size:12px;color:#94a3b8;margin-top:4px;font-weight:500;}
+
+    /* CARD */
+    .card{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:24px;transition:box-shadow 0.2s;}
+    .card:hover{box-shadow:0 4px 24px rgba(99,102,241,0.10);}
+    .tag{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:500;background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;margin:3px;}
+
+    /* SKILLS */
+    .skills-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+    .skill-cat{font-size:12px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;}
+
+    /* EXPERIENCE */
+    .exp-card{border-left:3px solid #6366f1;margin-bottom:16px;}
+    .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+    .exp-role{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:#0f172a;}
+    .exp-company{color:#6366f1;font-weight:600;font-size:14px;margin-top:2px;}
+    .badge-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;}
+    .exp-loc{color:#94a3b8;font-size:12px;margin-top:4px;}
+    .exp-summary{color:#475569;font-size:14px;line-height:1.85;margin-bottom:14px;}
+
+    /* EDUCATION */
+    .edu-card{margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+    .edu-degree{font-weight:700;color:#0f172a;font-size:15px;}
+    .edu-school{color:#6366f1;font-size:13px;font-weight:600;}
+    .edu-period{color:#94a3b8;font-size:12px;margin-top:2px;}
+    .cgpa-box{background:#ede9fe;color:#6366f1;border-radius:10px;padding:8px 16px;text-align:center;flex-shrink:0;}
+    .cgpa-n{font-size:20px;font-weight:700;}
+    .cgpa-l{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+
+    /* ACHIEVEMENTS */
+    .ach-list{display:flex;flex-direction:column;gap:10px;}
+    .ach-item{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;}
+    .ach-num{background:#ede9fe;color:#6366f1;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;}
+    .ach-text{color:#475569;font-size:14px;line-height:1.7;}
+
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .proj-card{display:flex;flex-direction:column;}
+    .proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:8px;}
+    .badge-date{border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;}
+    .badge-blue{background:#f0f4ff;color:#3730a3;border:1px solid #c7d2fe;}
+    .badge-amber{background:#fef3c7;color:#92400e;border:1px solid #fde68a;}
+    .badge-metric{border-radius:6px;padding:3px 10px;font-size:12px;font-weight:700;}
+    .badge-green2{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;}
+    .badge-amber2{background:#fef9ee;color:#b45309;border:1px solid #fcd34d;}
+    .proj-title{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:#0f172a;margin:10px 0 8px;}
+    .proj-desc{color:#64748b;font-size:13px;line-height:1.7;margin-bottom:12px;}
+    .feat-label{font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+    .feat-list{padding-left:16px;margin-bottom:12px;}
+    .feat-list li{color:#475569;font-size:13px;line-height:1.7;}
+    .proj-btns{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;padding-top:12px;}
+    .btn-sm-dark{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#0f172a;color:white;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;}
+    .btn-sm-dark:hover{opacity:0.85;text-decoration:none;}
+    .btn-sm-indigo{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#6366f1;color:white;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;}
+    .btn-sm-indigo:hover{opacity:0.85;text-decoration:none;}
+    .industry-badge{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:8px;font-weight:600;font-size:13px;}
+
+    /* RESUME */
+    .resume-card{display:flex;flex-direction:column;align-items:center;padding:48px 32px;text-align:center;border:2px dashed #c7d2fe;border-radius:14px;background:white;}
+    .resume-icon{width:64px;height:64px;background:#ede9fe;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:28px;}
+    .resume-title{font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:#0f172a;margin-bottom:8px;}
+    .resume-sub{color:#64748b;font-size:14px;line-height:1.7;max-width:480px;margin-bottom:24px;}
+    .resume-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 28px;margin-bottom:28px;text-align:left;width:100%;max-width:560px;}
+    .meta-row{display:flex;gap:12px;margin-bottom:10px;font-size:14px;}
+    .meta-key{color:#94a3b8;font-weight:600;min-width:90px;}
+    .meta-val{color:#334155;}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .contact-val{font-size:13px;color:#0f172a;font-weight:500;word-break:break-all;}
+    .contact-card{overflow:hidden;}
+    .contact-card{display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;}
+    .contact-card:hover{text-decoration:none;}
+    .contact-icon{font-size:28px;}
+    .contact-label{font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+
+
+    /* FOOTER */
+    .footer{margin-top:40px;text-align:center;padding:32px 0 20px;border-top:1px solid #e2e8f0;color:#94a3b8;font-size:13px;}
+
+    /* SECTION SUBHEADING */
+    .sub-heading{font-family:'Sora',sans-serif;font-weight:700;font-size:20px;color:#0f172a;margin-bottom:16px;margin-top:32px;}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .hamburger{display:block;}
+      .stats{grid-template-columns:repeat(2,1fr);}
+      .skills-grid{grid-template-columns:1fr;}
+      .projects-grid{grid-template-columns:1fr;}
+      .exp-header{flex-direction:column;align-items:flex-start;}
+      section{padding:48px 0 24px;}
+    }
+    @media(max-width:480px){
+      .card{padding:18px;}
+      .resume-card{padding:28px 18px;}
+      .btn{padding:9px 14px;font-size:13px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">RR<span>.</span></div>
+    <div class="nav-links">
+      <a href="#about" class="active">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#skills" onclick="closeMenu()">Skills</a>
+    <a href="#experience" onclick="closeMenu()">Experience</a>
+    <a href="#projects" onclick="closeMenu()">Projects</a>
+    <a href="#resume" onclick="closeMenu()">Resume</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <p class="available">Available for opportunities</p>
+    <h1>Roshan Raturi</h1>
+    <p class="title1">Associate Analyst — Robotics &amp; Content Engineering</p>
+    <p class="title2">Machine Learning Data Operations and Labeling</p>
+    <p class="bio">MCA graduate with hands-on industry experience building ML pipelines, fraud detection systems, and collaborative developer tools. Passionate about applying AI to solve real-world problems. Currently working as an Associate Analyst at GlobalLogic Technologies, focused on automation and intelligent data systems.</p>
+    <div class="btn-row">
+      <a href="https://www.linkedin.com/in/roshanraturi28/" target="_blank" class="btn btn-indigo">LinkedIn</a>
+      <a href="https://github.com/roshan07273" target="_blank" class="btn btn-dark">GitHub</a>
+      <a href="https://leetcode.com/u/roshanraturi07/" target="_blank" class="btn btn-orange">LeetCode</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">1+</div><div class="stat-l">Years Experience</div></div>
+      <div class="stat"><div class="stat-n">600+</div><div class="stat-l">DSA Problems Solved</div></div>
+      <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Coding Contests</div></div>
+      <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Projects Shipped</div></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-title"><h2>Technical Skills</h2><div class="line"></div></div>
+    <div class="skills-grid">
+      <div class="card"><div class="skill-cat">Languages</div><div><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">C++</span><span class="tag">SQL</span></div></div>
+      <div class="card"><div class="skill-cat">Frontend</div><div><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Tailwind CSS</span></div></div>
+      <div class="card"><div class="skill-cat">AI/ML &amp; Data</div><div><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">FAISS</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Scikit-learn</span><span class="tag">LLMs</span><span class="tag">Vector Embeddings</span><span class="tag">Data Annotation</span><span class="tag">OpenCV</span></div></div>
+      <div class="card"><div class="skill-cat">Backend &amp; APIs</div><div><span class="tag">FastAPI</span><span class="tag">RESTful APIs</span><span class="tag">NoSQL</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">DBMS</span></div></div>
+      <div class="card"><div class="skill-cat">Tools &amp; Cloud</div><div><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Docker</span><span class="tag">Google Cloud</span><span class="tag">Claude Code</span><span class="tag">Cursor</span><span class="tag">Copilot</span><span class="tag">Excel</span></div></div>
+      <div class="card"><div class="skill-cat">Core Concepts</div><div><span class="tag">OOP</span><span class="tag">SDLC</span><span class="tag">DSA</span><span class="tag">API Integration</span><span class="tag">Cross-validation</span><span class="tag">ROC-AUC</span><span class="tag">F1-score</span></div></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-title"><h2>Experience</h2><div class="line"></div></div>
+
+    <div class="card exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Associate Analyst</div>
+          <div class="exp-company">GlobalLogic Technologies Pvt. Limited</div>
+        </div>
+        <div>
+          <span class="badge-green">Nov 2024 – Present</span>
+          <div class="exp-loc">India</div>
+        </div>
+      </div>
+      <p class="exp-summary">Worked on building clean, reliable training data for AI and robotics systems, annotating robotic action sequences at the frame level, flagging anomalies, and breaking down where and why multi-step workflows failed. Dug into motion errors, edge cases, and task breakdowns to produce structured labels that actually improved what the models learned. Also worked on temporal data pipelines, tagging state transitions and performance drops to help teams spot patterns faster and ship better models. Turned raw operational footage into production-ready training datasets aligned with real deployment needs across ML, LLMs, and robotics pipelines.</p>
+      <div><span class="tag">Data Annotation</span><span class="tag">Robotics AI</span><span class="tag">ML Pipelines</span><span class="tag">LLMs</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Temporal Data</span></div>
+    </div>
+
+    <div class="sub-heading">Education</div>
+    <div class="card edu-card">
+      <div><div class="edu-degree">Masters in Computer Applications (MCA)</div><div class="edu-school">Graphic Era University</div><div class="edu-period">July 2022 – June 2024</div></div>
+      <div class="cgpa-box"><div class="cgpa-n">8.03</div><div class="cgpa-l">CGPA</div></div>
+    </div>
+    <div class="card edu-card">
+      <div><div class="edu-degree">Bachelors in Computer Applications (BCA)</div><div class="edu-school">DIT University</div><div class="edu-period">July 2019 – June 2022</div></div>
+      <div class="cgpa-box"><div class="cgpa-n">7.23</div><div class="cgpa-l">CGPA</div></div>
+    </div>
+
+    <div class="sub-heading">Achievements</div>
+    <div class="ach-list">
+      <div class="ach-item"><div class="ach-num">1</div><div class="ach-text">Ranked 164 globally in Codelicious at CodeChef; Global Rank 88 in Starters 104 Division 4; Rank 44 in CodeStudio Weekly Contest — 50+ contests participated.</div></div>
+      <div class="ach-item"><div class="ach-num">2</div><div class="ach-text">Gold Medalist in 12th grade with 80% from Govt. School — highest score in the board center in 2017.</div></div>
+      <div class="ach-item"><div class="ach-num">3</div><div class="ach-text">Attended AI Impact Summit 2026, India — 5+ sessions on AI's role in economic development, health, education, agriculture, and sustainable cities.</div></div>
+      <div class="ach-item"><div class="ach-num">4</div><div class="ach-text">Solved 600+ DSA problems on LeetCode and GeeksforGeeks.</div></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-title"><h2>Projects</h2><div class="line"></div></div>
+    <div class="projects-grid">
+
+      <div class="card proj-card">
+        <div class="proj-top">
+          <span class="badge-date badge-amber">Nov 2024 – Present</span>
+          <span class="badge-metric badge-amber2">Industry · GlobalLogic</span>
+        </div>
+        <div class="proj-title">MLDO: Machine Learning Data Operations</div>
+        <p class="proj-desc">Industry project at GlobalLogic Technologies focused on building production-ready training datasets for ML, LLM, and robotics systems. Responsible for the full data pipeline — from raw operational footage to structured, deployment-aligned labels.</p>
+        <div class="feat-label">Key Work</div>
+        <ul class="feat-list">
+          <li>Frame-level annotation of robotic action sequences</li>
+          <li>Anomaly flagging &amp; workflow failure analysis</li>
+          <li>Temporal data pipelines for state transition tagging</li>
+          <li>98%+ annotation accuracy across all datasets</li>
+        </ul>
+        <div><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">ML Pipelines</span><span class="tag">LLMs</span><span class="tag">Robotics AI</span></div>
+        <div class="proj-btns"><span class="industry-badge">🏢 Industry Project</span></div>
+      </div>
+
+      <div class="card proj-card">
+        <div class="proj-top">
+          <span class="badge-date badge-blue">Oct 2024</span>
+          <span class="badge-metric badge-green2">92% performance growth</span>
+        </div>
+        <div class="proj-title">CodeMate: Pair Programming Application</div>
+        <p class="proj-desc">A full-featured platform for developers to collaborate, solve coding challenges, and pair program in real-time. Connects like-minded developers to streamline the pair programming experience.</p>
+        <div class="feat-label">Features</div>
+        <ul class="feat-list">
+          <li>Light/dark mode toggle &amp; live previews</li>
+          <li>Video conferencing &amp; room history</li>
+          <li>Authentication, databases &amp; Docker deployment</li>
+        </ul>
+        <div><span class="tag">React.js</span><span class="tag">Tailwind CSS</span><span class="tag">Docker</span><span class="tag">Google Cloud</span><span class="tag">PostgreSQL</span><span class="tag">NextAuth</span></div>
+        <div class="proj-btns">
+          <a href="https://github.com/roshan07273" target="_blank" class="btn-sm-dark">GitHub →</a>
+          <a href="https://dev-finder-main-opal.vercel.app/" target="_blank" class="btn-sm-indigo">Live Demo ↗</a>
+        </div>
+      </div>
+
+      <div class="card proj-card">
+        <div class="proj-top">
+          <span class="badge-date badge-blue">2024</span>
+          <span class="badge-metric badge-green2">AI-powered feedback</span>
+        </div>
+        <div class="proj-title">PrepWise: Online Interview Conferencing Platform</div>
+        <p class="proj-desc">An AI-powered interview preparation and conferencing platform that helps developers practice technical interviews with real-time feedback and mock sessions.</p>
+        <div class="feat-label">Features</div>
+        <ul class="feat-list">
+          <li>Live video interview conferencing</li>
+          <li>AI-assisted interview feedback</li>
+          <li>Session recording &amp; performance analytics</li>
+        </ul>
+        <div><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">React.js</span><span class="tag">Tailwind CSS</span><span class="tag">Vercel</span></div>
+        <div class="proj-btns">
+          <a href="https://github.com/roshan07273/interviewhub" target="_blank" class="btn-sm-dark">GitHub →</a>
+          <a href="https://interviewhub-gamma.vercel.app/" target="_blank" class="btn-sm-indigo">Live Demo ↗</a>
+        </div>
+      </div>
+
+      <div class="card proj-card">
+        <div class="proj-top">
+          <span class="badge-date badge-blue">2025</span>
+          <span class="badge-metric badge-green2">RAG + LangChain</span>
+        </div>
+        <div class="proj-title">DocuMind: RAG-Powered Document Q&amp;A</div>
+        <p class="proj-desc">A retrieval-augmented generation system that lets users upload documents and ask natural language questions. Built to demonstrate LangChain pipelines, vector embeddings, and LLM integration end-to-end.</p>
+        <div class="feat-label">Features</div>
+        <ul class="feat-list">
+          <li>PDF ingestion &amp; text chunking pipeline</li>
+          <li>Vector embeddings via FAISS</li>
+          <li>LangChain RetrievalQA + FastAPI streaming</li>
+        </ul>
+        <div><span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">FAISS</span><span class="tag">OpenAI API</span><span class="tag">FastAPI</span><span class="tag">RAG</span></div>
+        <div class="proj-btns">
+          <a href="https://github.com/roshan07273" target="_blank" class="btn-sm-dark">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="card proj-card">
+        <div class="proj-top">
+          <span class="badge-date badge-blue">November 2025</span>
+          <span class="badge-metric badge-green2">High accuracy</span>
+        </div>
+        <div class="proj-title">Online Payments Fraud Detection</div>
+        <p class="proj-desc">A production-grade fraud detection system that processes large-scale transaction datasets to identify high-risk payment activities using machine learning.</p>
+        <div class="feat-label">Features</div>
+        <ul class="feat-list">
+          <li>Random Forest &amp; Naive Bayes models</li>
+          <li>FastAPI real-time prediction endpoints</li>
+          <li>ROC-AUC and F1-score optimization</li>
+        </ul>
+        <div><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Scikit-learn</span></div>
+        <div class="proj-btns">
+          <a href="https://github.com/roshan07273" target="_blank" class="btn-sm-dark">GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <div class="section-title"><h2>Resume</h2><div class="line"></div></div>
+    <div class="resume-card">
+      <div class="resume-icon">📄</div>
+      <div class="resume-title">Roshan Raturi — Resume</div>
+      <p class="resume-sub">MCA graduate with 1+ year of industry experience in AI/ML data pipelines, full-stack development, and fraud detection. Open to AI/ML engineering and software development roles.</p>
+      <div class="resume-meta">
+        <div class="meta-row"><span class="meta-key">Role</span><span class="meta-val">Associate Analyst @ GlobalLogic Technologies</span></div>
+        <div class="meta-row"><span class="meta-key">Education</span><span class="meta-val">MCA – Graphic Era University (CGPA 8.03)</span></div>
+        <div class="meta-row"><span class="meta-key">Skills</span><span class="meta-val">Python, React.js, FastAPI, ML, SQL, Docker</span></div>
+        <div class="meta-row"><span class="meta-key">Location</span><span class="meta-val">Delhi, India</span></div>
+        <div class="meta-row"><span class="meta-key">Email</span><span class="meta-val">roshanraturi804@gmail.com</span></div>
+      </div>
+      <div class="btn-row" style="justify-content:center;">
+        <a href="https://drive.google.com/file/d/1yCX3WIQbifGpEWz25yqRdD-XJjgR68fL/view?usp=sharing" target="_blank" class="btn btn-indigo">Download Resume (PDF)</a>
+        <a href="https://www.linkedin.com/in/roshanraturi28/" target="_blank" class="btn" style="background:#0077b5;color:white;">View LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-title"><h2>Contact</h2><div class="line"></div></div>
+    <div class="contact-grid">
+      <a href="mailto:roshanraturi804@gmail.com" class="card contact-card"><span class="contact-icon">📧</span><div><div class="contact-label">Email</div><div class="contact-val">roshanraturi804@gmail.com</div></div></a>
+      <a href="tel:+916398904115" class="card contact-card"><span class="contact-icon">📱</span><div><div class="contact-label">Phone</div><div class="contact-val">+91-6398904115</div></div></a>
+      <a href="https://www.linkedin.com/in/roshanraturi28/" target="_blank" class="card contact-card"><span class="contact-icon">🔗</span><div><div class="contact-label">LinkedIn</div><div class="contact-val">/in/roshanraturi28</div></div></a>
+      <a href="https://github.com/roshan07273" target="_blank" class="card contact-card"><span class="contact-icon">🐙</span><div><div class="contact-label">GitHub</div><div class="contact-val">github.com/roshan07273</div></div></a>
+      <a href="https://leetcode.com/u/roshanraturi07/" target="_blank" class="card contact-card"><span class="contact-icon">🧩</span><div><div class="contact-label">LeetCode</div><div class="contact-val">roshanraturi07</div></div></a>
+    </div>
+    <div class="footer">Designed &amp; built by Roshan Raturi · Delhi, India · 2026</div>
+  </section>
+
+</div>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu(){
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+  // Active nav highlight on scroll
+  const sections = ['about','skills','experience','projects','resume','contact'];
+  window.addEventListener('scroll', () => {
+    let current = 'about';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if(el && window.scrollY >= el.offsetTop - 80) current = id;
+    });
+    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+
+</body>
+</html>
