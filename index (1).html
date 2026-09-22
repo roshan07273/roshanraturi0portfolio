@@ -132,6 +132,15 @@
     .contact-label{font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:1px;}
 
 
+    /* CERTIFICATIONS */
+    .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+    .cert-card{display:flex;align-items:flex-start;gap:16px;text-decoration:none;color:inherit;}
+    .cert-card:hover{text-decoration:none;}
+    .cert-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+    .cert-issuer{font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
+    .cert-name{font-size:14px;font-weight:700;color:#0f172a;line-height:1.4;margin-bottom:4px;}
+    .cert-link{font-size:12px;color:#6366f1;font-weight:500;}
+
     /* FOOTER */
     .footer{margin-top:40px;text-align:center;padding:32px 0 20px;border-top:1px solid #e2e8f0;color:#94a3b8;font-size:13px;}
 
@@ -166,6 +175,7 @@
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#resume">Resume</a>
+      <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
     </div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
@@ -176,6 +186,7 @@
     <a href="#experience" onclick="closeMenu()">Experience</a>
     <a href="#projects" onclick="closeMenu()">Projects</a>
     <a href="#resume" onclick="closeMenu()">Resume</a>
+    <a href="#certifications" onclick="closeMenu()">Certifications</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
   </div>
 </nav>
@@ -199,7 +210,7 @@
       <div class="stat"><div class="stat-n">1+</div><div class="stat-l">Years Experience</div></div>
       <div class="stat"><div class="stat-n">600+</div><div class="stat-l">DSA Problems Solved</div></div>
       <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Coding Contests</div></div>
-      <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Projects Shipped</div></div>
+      <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Projects Shipped</div></div>
     </div>
   </section>
 
@@ -279,28 +290,7 @@
 
       <div class="card proj-card">
         <div class="proj-top">
-          <span class="badge-date badge-blue">June 2026</span>
-          <span class="badge-metric badge-green2">Tool-based AI agent</span>
-        </div>
-        <div class="proj-title">AI Customer Support Refund Agent</div>
-        <p class="proj-desc">A product vertical slice for an AI customer support agent that processes, denies, or escalates e-commerce refund requests against a strict refund policy. Backend loads CRM data, retrieves policy context, runs tool-based validation, and returns both the customer-facing answer and the internal reasoning trace.</p>
-        <div class="feat-label">Features</div>
-        <ul class="feat-list">
-          <li>Deterministic policy validation with LangChain-compatible tool orchestration</li>
-          <li>15 mocked CRM profiles with orders, refund history &amp; risk scores</li>
-          <li>React admin dashboard rendering per-tool-call reasoning traces</li>
-          <li>Optional OpenAI wording layer, Docker Compose setup for reviewers</li>
-        </ul>
-        <div><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Docker</span></div>
-        <div class="proj-btns">
-          <a href="https://github.com/roshan07273/ai-customer-support-agent" target="_blank" class="btn-sm-dark">GitHub →</a>
-          <a href="https://ai-refund-agent-web.onrender.com/" target="_blank" class="btn-sm-indigo">Live Demo ↗</a>
-        </div>
-      </div>
-
-      <div class="card proj-card">
-        <div class="proj-top">
-          <span class="badge-date badge-blue">Oct 2025</span>
+          <span class="badge-date badge-blue">Oct 2024</span>
           <span class="badge-metric badge-green2">92% performance growth</span>
         </div>
         <div class="proj-title">CodeMate: Pair Programming Application</div>
@@ -340,7 +330,7 @@
 
       <div class="card proj-card">
         <div class="proj-top">
-          <span class="badge-date badge-blue">2026</span>
+          <span class="badge-date badge-blue">2025</span>
           <span class="badge-metric badge-green2">RAG + LangChain</span>
         </div>
         <div class="proj-title">DocuMind: RAG-Powered Document Q&amp;A</div>
@@ -360,6 +350,28 @@
       <div class="card proj-card">
         <div class="proj-top">
           <span class="badge-date badge-blue">2025</span>
+          <span class="badge-metric badge-green2">AI Agent · LangChain</span>
+        </div>
+        <div class="proj-title">AI Customer Support Refund Agent</div>
+        <p class="proj-desc">A realistic AI agent that processes, denies, or escalates e-commerce refund requests against a strict refund policy. Features a customer chat interface alongside an admin dashboard showing the agent's internal reasoning trace.</p>
+        <div class="feat-label">Features</div>
+        <ul class="feat-list">
+          <li>15 mocked CRM profiles with orders, risk scores & edge cases</li>
+          <li>Tool-based validation — CRM lookup, order lookup, policy retrieval</li>
+          <li>Deterministic policy engine + optional OpenAI wording layer</li>
+          <li>Admin reasoning trace dashboard — approvals, denials, escalations</li>
+          <li>Docker Compose setup for one-command deployment</li>
+        </ul>
+        <div><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Docker</span><span class="tag">RAG</span></div>
+        <div class="proj-btns">
+          <a href="https://github.com/roshan07273/ai-customer-support-agent" target="_blank" class="btn-sm-dark">GitHub →</a>
+          <a href="https://ai-refund-agent-web.onrender.com/" target="_blank" class="btn-sm-indigo">Live Demo ↗</a>
+        </div>
+      </div>
+
+      <div class="card proj-card">
+        <div class="proj-top">
+          <span class="badge-date badge-blue">November 2025</span>
           <span class="badge-metric badge-green2">High accuracy</span>
         </div>
         <div class="proj-title">Online Payments Fraud Detection</div>
@@ -385,18 +397,62 @@
     <div class="resume-card">
       <div class="resume-icon">📄</div>
       <div class="resume-title">Roshan Raturi — Resume</div>
-      <p class="resume-sub">Roshan Raturi, Analsyt at GlobalLogic Technologies Pvt. Ltd.</p>
+      <p class="resume-sub">MCA graduate with 1+ year of industry experience in AI/ML data pipelines, full-stack development, and fraud detection. Open to AI/ML engineering and software development roles.</p>
       <div class="resume-meta">
-        <div class="meta-row"><span class="meta-key">Role</span><span class="meta-val">Analyst- MLOps @ GlobalLogic Technologies</span></div>
+        <div class="meta-row"><span class="meta-key">Role</span><span class="meta-val">Associate Analyst @ GlobalLogic Technologies</span></div>
         <div class="meta-row"><span class="meta-key">Education</span><span class="meta-val">MCA – Graphic Era University (CGPA 8.03)</span></div>
-        <div class="meta-row"><span class="meta-key">Skills</span><span class="meta-val">Python, PostgreSQL, Pandas, Numpy, Scikit-learn, OpenCV, FastAPI, AI/ML Foundations(LangChain, FAISS, RAG, Vector Databases), React.js, SQL, Docker</span></div>
+        <div class="meta-row"><span class="meta-key">Skills</span><span class="meta-val">Python, React.js, FastAPI, ML, SQL, Docker</span></div>
         <div class="meta-row"><span class="meta-key">Location</span><span class="meta-val">Delhi, India</span></div>
         <div class="meta-row"><span class="meta-key">Email</span><span class="meta-val">roshanraturi804@gmail.com</span></div>
       </div>
       <div class="btn-row" style="justify-content:center;">
-        <a href="https://drive.google.com/file/d/1xwffX2mn_r_vGgjbSafji_pcObXhgU9B/view?usp=sharing" target="_blank" class="btn btn-indigo">Download Resume (PDF)</a>
+        <a href="https://drive.google.com/file/d/1yCX3WIQbifGpEWz25yqRdD-XJjgR68fL/view?usp=sharing" target="_blank" class="btn btn-indigo">Download Resume (PDF)</a>
         <a href="https://www.linkedin.com/in/roshanraturi28/" target="_blank" class="btn" style="background:#0077b5;color:white;">View LinkedIn</a>
       </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-title"><h2>Certifications</h2><div class="line"></div></div>
+    <div class="cert-grid">
+
+      <a href="https://verify.skilljar.com/c/d52czrti43g8" target="_blank" class="card cert-card">
+        <div class="cert-icon" style="background:#ede9fe;">🤖</div>
+        <div>
+          <div class="cert-issuer">Anthropic</div>
+          <div class="cert-name">Building Claude with the Anthropic API</div>
+          <div class="cert-link">View Certificate ↗</div>
+        </div>
+      </a>
+
+      <a href="https://www.hackerrank.com/certificates/iframe/b1d2613f610c" target="_blank" class="card cert-card">
+        <div class="cert-icon" style="background:#f0fdf4;">🐍</div>
+        <div>
+          <div class="cert-issuer">HackerRank</div>
+          <div class="cert-name">Introduction to Programming Using Python</div>
+          <div class="cert-link">View Certificate ↗</div>
+        </div>
+      </a>
+
+      <a href="https://www.hackerrank.com/certificates/a052d02994d2" target="_blank" class="card cert-card">
+        <div class="cert-icon" style="background:#fef9c3;">⚡</div>
+        <div>
+          <div class="cert-issuer">HackerRank</div>
+          <div class="cert-name">JavaScript</div>
+          <div class="cert-link">View Certificate ↗</div>
+        </div>
+      </a>
+
+      <a href="https://www.hackerrank.com/certificates/iframe/7bc9bf08bb08" target="_blank" class="card cert-card">
+        <div class="cert-icon" style="background:#eff6ff;">⚛️</div>
+        <div>
+          <div class="cert-issuer">HackerRank</div>
+          <div class="cert-name">React</div>
+          <div class="cert-link">View Certificate ↗</div>
+        </div>
+      </a>
+
     </div>
   </section>
 
@@ -423,7 +479,7 @@
     document.getElementById('mobileMenu').classList.remove('open');
   }
   // Active nav highlight on scroll
-  const sections = ['about','skills','experience','projects','resume','contact'];
+  const sections = ['about','skills','experience','projects','resume','certifications','contact'];
   window.addEventListener('scroll', () => {
     let current = 'about';
     sections.forEach(id => {
